@@ -94,6 +94,20 @@ body {
     vertical-align: middle;
 }
 
+.gotop {
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+}
+
+.gotop:hover {
+    text-decoration-line: none;
+    background-color: transparent;
+    color: white;
+}
+
 .container2 h2 {
     text-align: center;
     margin-bottom: 40px;
@@ -153,7 +167,8 @@ body {
     margin-top: -30px;
    /*  position: absolute; */
     /* margin-top: -10px; */
-    height: 30px;
+    height: 60px;
+    
     /*bottom: 0;
     width: 100%; */
 }

@@ -65,8 +65,12 @@ if(!isset($_SESSION['user_id'])){
 
         <div style="margin-top: 50px; text-align: center;" id="mainpagecontainer" class="container">
 
-        <div style='min-height: 600px; margin-bottom: 100px;' id='show'></div>
+        <div style='min-height: 600px; margin-bottom: 100px;'> <div id='show'></div>
+        <div id='gototop' style='text-align: center; margin-top: 50px; display: block;' class='container'><a href='#navbarDropdownMenuLink' class='alert alert-info gotop'>GO TO TOP</a></div>
+        </div>
+
         
+</div>
 
         <!-- Footer -->
         <div class="container-fluid">

@@ -16,7 +16,13 @@ document.getElementById("search").onclick = function() {
 
     var api_key = "509ffea9ab91442f2d9586f95de3ff50";
     var query_string = $("#searchquery").val();
-    query_string = encodeURI(query_string);
+    if (query_string.length == 0) {
+        $("#show").html("<div class='alert alert-danger'>Please enter some words.</div>")
+    }
+    
+    else {
+
+        query_string = encodeURI(query_string);
     var url_search = "https://api.themoviedb.org/3/search/movie?api_key="+api_key+"&language=en-US&query="+query_string+"&page=1&include_adult=true";
     fetch(url_search)
     .then((resp) => resp.json()) // Transform the data into json
@@ -162,6 +168,7 @@ document.getElementById("search").onclick = function() {
             
         }
     }).catch(err => $("#show").html("<div class='alert alert-danger'>Error connecting to the TMDb database. Please try again after sometime.</div>"));
+    }
 
     
 };
