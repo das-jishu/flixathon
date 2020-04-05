@@ -66,8 +66,8 @@ if(!isset($_SESSION['user_id'])){
             <div style="margin-bottom: 50px; text-align: center;">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn lists" onclick="window.open('./favorites-page.php', '_self')">FAVORITES</button>
-                    <button type="button" style="border-left: 2px solid white;" class="btn lists">WATCHED</button>
-                    <button type="button" style="border-left: 2px solid white;" class="btn lists">BUCKET LIST</button>
+                    <button type="button" style="border-left: 2px solid white;" class="btn lists" onclick="window.open('./watched-page.php', '_self')">WATCHED</button>
+                    <button type="button" style="border-left: 2px solid white;" class="btn lists" onclick="window.open('./bucketlist-page.php', '_self')">BUCKET LIST</button>
                 </div>
             </div>
         

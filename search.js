@@ -61,7 +61,7 @@ document.getElementById("search").onclick = function() {
                 }
                 var img = "<img style='height:60px; width:50px;' src='"+base_url+"'></img>";
                 
-                value += "<div class='element'><table style='background-color: white; margin: 0px;' class='table'><tr><td style='display: none;'>"+id+"</td><td style='text-align: left;'>"+img+"</td><td style='text-align: center; vertical-align: middle;'>"+title+"</td><td style='text-align: right; vertical-align: middle;'>"+release+"</td><td style='display: none; text-align: center; vertical-align: middle;'>"+vote+"</td><td style='display: none; text-align: center; vertical-align: middle;'>"+base_url+"</td></tr></table><div style='padding: 10px; color: white;' class='extras showextra'><div style='margin-top: 15px;'><h4>SYNOPSIS<hr style='border: 1px solid white;'></h4></div><div>"+overview+"</div>";
+                value += "<div class='element'><table style='background-color: white; margin: 0px;' class='table'><tr><td style='display: none;'>"+id+"</td><td style='text-align: left;'>"+img+"</td><td style='text-align: center; vertical-align: middle;'>"+title+"</td><td style='text-align: right; vertical-align: middle;'>"+release+"</td><td style='display: none; text-align: center; vertical-align: middle;'>"+vote+"</td><td style='display: none; text-align: center; vertical-align: middle;'>"+base_url+"</td></tr></table><div style='padding: 10px; color: white;' class='extras showextra'><div style='margin-top: 15px;'><h4>SYNOPSIS<hr style='border: 1px solid white;'></h4></div><div class='overview'>"+overview+"</div>";
 
                 value += '<div class="btn-group" role="group" style="margin: 20px auto 30px auto;" aria-label="Basic example"><button type="button" class="btn btn-warning addtofavorites">FAVORITES</button><button type="button" style="border-left: 2px solid white;" class="btn btn-warning addtowatched">WATCHED</button><button type="button" style="border-left: 2px solid white;" class="btn btn-warning addtobucket">BUCKET LIST</button></div>';
 
@@ -78,17 +78,68 @@ document.getElementById("search").onclick = function() {
                 var cur_release = $(this).find('table tr td:eq(3)').text();
                 var cur_vote = $(this).find('table tr td:eq(4)').text();
                 var cur_posterpath = $(this).find('table tr td:eq(5)').text();
+                var cur_overview = $(this).find('.extras .overview').text();
 
                 $(this).find('.addtofavorites').click(function() {
                     $.ajax({  
                         type: 'POST',  
                         url: './addlist.php', 
-                        data: { table: 'favorites', movie_id: cur_id, title: cur_title, releaseyear: cur_release, vote: cur_vote, posterpath: cur_posterpath },
+                        data: { table: 'favorites', movie_id: cur_id, title: cur_title, releaseyear: cur_release, vote: cur_vote, posterpath: cur_posterpath, overview: cur_overview },
                         success: function(response) {
                             
                             if(response == 'success')
                             {
                                 $("#show").html("<div class='alert alert-success'>Successfully added to Favorites!</div>");
+                            }
+                            else
+                            {
+                                $("#show").html(response);
+                                //console.log(data);
+                            }
+                        },
+                        error: function() {
+                            $("#show").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                        }
+                    });
+
+                });
+
+
+                $(this).find('.addtowatched').click(function() {
+                    $.ajax({  
+                        type: 'POST',  
+                        url: './addlist.php', 
+                        data: { table: 'watched', movie_id: cur_id, title: cur_title, releaseyear: cur_release, vote: cur_vote, posterpath: cur_posterpath, overview: cur_overview },
+                        success: function(response) {
+                            
+                            if(response == 'success')
+                            {
+                                $("#show").html("<div class='alert alert-success'>Successfully added to Watched!</div>");
+                            }
+                            else
+                            {
+                                $("#show").html(response);
+                                //console.log(data);
+                            }
+                        },
+                        error: function() {
+                            $("#show").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                        }
+                    });
+
+                });
+
+
+                $(this).find('.addtobucket').click(function() {
+                    $.ajax({  
+                        type: 'POST',  
+                        url: './addlist.php', 
+                        data: { table: 'bucketlist', movie_id: cur_id, title: cur_title, releaseyear: cur_release, vote: cur_vote, posterpath: cur_posterpath, overview: cur_overview },
+                        success: function(response) {
+                            
+                            if(response == 'success')
+                            {
+                                $("#show").html("<div class='alert alert-success'>Successfully added to Bucket List!</div>");
                             }
                             else
                             {

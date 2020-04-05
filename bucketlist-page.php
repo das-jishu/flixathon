@@ -59,12 +59,13 @@ if(!isset($_SESSION['user_id'])){
 
         <div style="margin-top: 100px;" class="container">
             <h1 class="welcome-user" style="text-align: center; color: black;">
-            <span style="background-color: Gold; padding: 5px; border-radius: 10px;">FAVORITES</span></h1>
+            <span style="background-color: Gold; padding: 5px; border-radius: 10px;">BUCKET LIST</span></h1>
             
         </div>
 
         <div style="margin-top: 50px; text-align: center;" id="mainpagecontainer" class="container">
 
+        <div id='error'></div>
         <div style='min-height: 600px; margin-bottom: 100px;' id='show'></div>
         
 
@@ -88,7 +89,7 @@ if(!isset($_SESSION['user_id'])){
 $.ajax({  
     type: 'POST',  
     url: './loadlist.php',
-    data: { table: 'favorites' }, 
+    data: { table: 'bucketlist' }, 
     success: function(response) {
             $("#show").html(response);
 
@@ -97,13 +98,27 @@ $.ajax({
 
 
                 var movie_id = $(this).find('table tr td:eq(0)').text();
+                var titlerelease = $(this).find('table tr td:eq(2)').text();
+                var cur_title = titlerelease.substring(0,titlerelease.indexOf('-') - 1);
+                var cur_release = titlerelease.substring(titlerelease.length - 4);
+                var cur_vote = $(this).find('table tr td:eq(3)').text();
+                
+                var cur_posterpath = $(this).find('table tr td:eq(4)').text();
+                
+                var cur_overview = $(this).find('.extras .overview').text();
+
+                //console.log(cur_title);
+                //console.log(cur_release);
+                //console.log(cur_vote);
+                //console.log(cur_posterpath);
+                //console.log(cur_overview); 
 
                 $(this).find('.delete').click(function() {
                     
                     $.ajax({  
                         type: 'POST',  
                         url: './deletelist.php', 
-                        data: { table: 'favorites', movie_id: movie_id },
+                        data: { table: 'bucketlist', movie_id: movie_id },
                         success: function(response) {
                             
                             if(response == 'success')
@@ -112,14 +127,88 @@ $.ajax({
                             }
                             else
                             {
-                                $("#show").html(response);
+                                $("#error").html(response);
                                 //console.log(data);
                             }
                         },
                         error: function() {
-                            $("#show").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                            $("#error").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
                         }
                     });
+                });
+
+                $(this).find('.addtofavorites').click(function() {
+                    
+                    $.ajax({  
+                        type: 'POST',  
+                        url: './addlist.php', 
+                        data: { table: 'favorites', movie_id: movie_id, title: cur_title, releaseyear: cur_release, vote: cur_vote, posterpath: cur_posterpath, overview: cur_overview },
+                        success: function(response) {
+                            
+                            if(response == 'success')
+                            {
+                                $("#error").html('<div class="alert alert-success">Successfully added!</div>');
+                            }
+                            else
+                            {
+                                $("#error").html(response);
+                                //console.log(data);
+                            }
+                        },
+                        error: function() {
+                            $("#error").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                        }
+                    });
+
+                });
+
+                    $(this).find('.movetowatched').click(function() {
+                    console.log('gggg');
+                    $.ajax({  
+                        type: 'POST',  
+                        url: './addlist.php', 
+                        data: { table: 'watched', movie_id: movie_id, title: cur_title, releaseyear: cur_release, vote: cur_vote, posterpath: cur_posterpath, overview: cur_overview, event: 'move' },
+                        success: function(response) {
+                            
+                            if(response == 'success')
+                            {
+
+
+                    $.ajax({  
+                        type: 'POST',  
+                        url: './deletelist.php', 
+                        data: { table: 'bucketlist', movie_id: movie_id },
+                        success: function(response) {
+                            
+                            if(response == 'success')
+                            {
+                                location.reload(true);
+                                $('#error').html('<div class="alert alert-success">Successfully moved!</div>');
+                            }
+                            else
+                            {
+                                $("#error").html(response);
+                                //console.log(data);
+                            }
+                        },
+                        error: function() {
+                            $("#error").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                        }
+                    });
+
+
+                            }
+                            else
+                            {
+                                $("#error").html(response);
+                                //console.log(data);
+                            }
+                        },
+                        error: function() {
+                            $("#error").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                        }
+                    });
+                
                 });
             });
     },
