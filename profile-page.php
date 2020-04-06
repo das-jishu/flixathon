@@ -33,6 +33,8 @@ if($count == 1){
         <title>Company Website - Main</title>
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
         
         <!-- Linking external stylesheets -->
         <link rel="stylesheet" href="style.css">
@@ -67,6 +69,8 @@ if($count == 1){
                 <li class="nav-item navbar-right"><a class="btn btn-logout" href="./index.php?logout=1">LOGOUT</a></li>
             </ul>
         </nav>
+
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
 
 
         <div style="margin-top: 150px;" class="container">
@@ -113,20 +117,49 @@ if($count == 1){
         </div>
 
         <!-- Footer -->
-        <div class="container-fluid">
+        <div style="margin-top: 200px; height: auto; text-align: center;" class="container-fluid">
             <div id="footerself">
                 &copy; Copyright. All rights reserved.
             </div>
-            <div id="footerself2">
-                Developed by <span id="self"><b>Subham Das</b></span>
+            <div style='margin-top: 5px;' class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="footerbtn"><img id='selfimage' src='./self-image-circle.png'></img></button></button>
+                <button type="button" style="margin-top: 2px;" class="footerbtn"><span class='foottext' style='color: white;'>Developed by<br></span><span class='foottext' style='color: white;'>Subham Das</span></button>
             </div>
+            <br>
+            <div style='margin-top: 25px; margin-bottom: 15px;' class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="footerbtn" onclick="window.open('https://github.com/das-jishu')"><img class='footimage' id='github' title='Github' src='./GitHub-Mark-Light-120px-plus.png'></img></button>
+              <button type="button" class="footerbtn" onclick="window.open('https://www.facebook.com/subham.das.39948')"><img class='footimage' id='facebook' title='Facebook' src='./facebook_logos_PNG19754.png'></img></button>
+              <button type="button" class="footerbtn" onclick="window.open('https://www.linkedin.com/in/subham-das-51b5bb171/')"><img class='footimage' id='linkedin' title='Linkedin' src='./linkedIn_PNG37.png'></img></button>
+              <button type="button" class="footerbtn" onclick="window.open('https://twitter.com/lord_danton')"><img class='footimage' id='twitter' title='Twitter' src='./twitter_PNG34.png'></img></button>
+          </div>
         </div>
 
         <!-- Scripts -->
         <script>
-            document.getElementById('self').onclick=function() {
-                window.open('https://github.com/das-jishu', '_blank');
+            var mybutton = document.getElementById("myBtn");
+            //console.log('Active');
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {
+                scrollFunction();
+                
             };
+
+            function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+                
+            } else {
+                mybutton.style.display = "none";
+                
+            }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            }
+
         </script>
         
         <!-- Optional JavaScript -->

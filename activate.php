@@ -69,13 +69,21 @@ if(mysqli_affected_rows($link) == 1){
         
 
         <!-- Footer -->
-        <div class="container-fluid">
+        <div style="margin-top: 200px; height: auto; text-align: center;" class="container-fluid">
             <div id="footerself">
                 &copy; Copyright. All rights reserved.
             </div>
-            <div id="footerself2">
-                Developed by <span id="self"><b>Subham Das</b></span>
+            <div style='margin-top: 5px;' class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="footerbtn"><img id='selfimage' src='./self-image-circle.png'></img></button></button>
+                <button type="button" style="margin-top: 2px;" class="footerbtn"><span class='foottext' style='color: white;'>Developed by<br></span><span class='foottext' style='color: white;'>Subham Das</span></button>
             </div>
+            <br>
+            <div style='margin-top: 25px; margin-bottom: 15px;' class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="footerbtn" onclick="window.open('https://github.com/das-jishu')"><img class='footimage' id='github' title='Github' src='./GitHub-Mark-Light-120px-plus.png'></img></button>
+              <button type="button" class="footerbtn" onclick="window.open('https://www.facebook.com/subham.das.39948')"><img class='footimage' id='facebook' title='Facebook' src='./facebook_logos_PNG19754.png'></img></button>
+              <button type="button" class="footerbtn" onclick="window.open('https://www.linkedin.com/in/subham-das-51b5bb171/')"><img class='footimage' id='linkedin' title='Linkedin' src='./linkedIn_PNG37.png'></img></button>
+              <button type="button" class="footerbtn" onclick="window.open('https://twitter.com/lord_danton')"><img class='footimage' id='twitter' title='Twitter' src='./twitter_PNG34.png'></img></button>
+          </div>
         </div>
 
         <!-- Scripts -->

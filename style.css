@@ -246,6 +246,48 @@ body {
     cursor: pointer;
 }
 
+#selfimage {
+    height: 50px;
+    width: 50px;
+    margin-top: 5px;
+    margin-right: 15px;
+}
+
+.footerbtn {
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.footerbtn:hover {
+    cursor: auto;
+}
+
+.footerbtn:focus {
+    outline: 0;
+}
+
+.footimage {
+    width: 35px;
+    height: 35px;
+    margin: 0px 5px 2px 5px;
+}
+
+.footimage:hover {
+    cursor: pointer;
+}
+
+#facebook {
+    width: 48px;
+    height: 48px;
+}
+
+#twitter {
+    width: 32px;
+    height: 32px;
+}
+
 @media (max-width:768px) {
     .image {
         height: 80px;
@@ -348,6 +390,32 @@ body {
     #show tr {
         font-size: 16px;
     }
+
+    #selfimage {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;    
+    }
+
+    .foottext {
+        font-size: 12px;     
+    }
+
+    .footimage {
+        width: 28px;
+        height: 28px;
+        margin-top: 0px;
+    }
+    
+    #facebook {
+        width: 41px;
+        height: 41px;
+    }
+    
+    #twitter {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 #foot {
@@ -385,4 +453,27 @@ body {
 .showextra {
     display: none;
 }
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 50px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: red; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 1px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px;
+    height: 40px;
+    width: 40px; /* Increase font size */
+  }
+  
+  #myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+  }
+
 
