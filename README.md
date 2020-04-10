@@ -1,6 +1,7 @@
 # Flixathon
 
-A website which uses an API key to search the TMDb database for movies and add them to corresponding lists. There is an option to share the lists through various media like mail, tweets, whatsapp, sms. Made using HTML, CSS, Bootstrap, JavaScript(jQuery), Ajax, PHP, MySQL. Hosted by a free hosting service.
+Synopsis:
+A website which uses an API key to search the TMDb database for movies and add them to corresponding lists. There is an option to share the lists through various media like mail, tweets, Whatsapp, SMS. Made using HTML, CSS, Bootstrap, JavaScript(jQuery), Ajax, PHP, MySQL. Hosted by a free hosting service.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 © Flixathon. 2020. All Rights Reserved.
@@ -15,11 +16,11 @@ API provided by: TMDb
 Features:
 
 1. Login and logout with an added 'Remember Me' and 'Forgot Password' option.
-2. Searching for movies using the GET request through API.
+2. Search for movies using the GET request through API.
 3. Store movies in lists (Favorites, Watched, Bucket List).
-    --> A movie cannot be both in watched and bucket list.
-    --> A movie can be moved from bucket list to watched but not vice versa.
-    --> Movies can be moved from watched and bucket list to Favorites.
+--> A movie cannot be both in watched and bucket list.
+--> A movie can be moved from bucket list to watched but not vice versa.
+--> Movies can be moved from watched and bucket list to Favorites.
 4. Username and password can be updated.
 5. Activation key and password are encrypted with SHA256 hashing algorithm.
 6. The lists can be shared on Twitter, Whatsapp, Mail and SMS.
