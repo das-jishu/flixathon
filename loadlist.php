@@ -9,11 +9,11 @@
     //get the user_id
     $user_id = $_SESSION['user_id'];
     $table = $_POST['table'];
-    //run a query to look for notes corresponding to user_id
+    //run a query to look for movies corresponding to user_id
     $sql = "SELECT * FROM " . $table . " WHERE user_id ='$user_id' ORDER BY vote DESC";
     //$list = '<div id="show">';
     $list = '';
-    //shows notes or alert message
+    //shows lists or alert message
     if($result = mysqli_query($link, $sql)){
         if(mysqli_num_rows($result)>0){
             while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){

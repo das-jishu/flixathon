@@ -37,11 +37,6 @@ if(!isset($_SESSION['user_id'])){
         <!-- Navbar -->
         <nav class="navbar navbar-expand navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#"><img src="company-logo.png" class="logo"></a>
-            <!-- <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item navbar-right">
-                <button class="btn btn-light"><b>SIGN IN</b></button>
-              </li>  
-            </ul> -->
             <ul class="nav navbar-nav ml-auto">
                 <!-- <li class="nav-item navbar-right"><button class="btn-info"></button></li> -->
                 <li class="nav-item dropdown navbar-left">
@@ -67,9 +62,17 @@ if(!isset($_SESSION['user_id'])){
 
         <div style="margin-top: 50px; text-align: center;" id="mainpagecontainer" class="container">
 
+        <!-- The social media icon bar -->
+        <div class="icon-bar">
+        <a href="#" class="twitter-bar"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="whatsapp-bar"><i class="fa fa-whatsapp"></i></a>
+        <a href="#" class="mail-bar"><i class="fa fa-envelope-o"></i></a>
+        <a href="#" class="sms-bar"><i class="fa fa-commenting-o"></i></a>
+        </div>
+
         <div style="margin-bottom: 50px; text-align: center;">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" style='border: 1px solid white;' class="btn lists" onclick="window.open('./mainpageloggedin.php', '_self')"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp; &nbsp; GO BACK</button>
+                    <button type="button" style='border: 1px solid white;' class="btn lists" onclick="window.open('./mainpageloggedin.php', '_self')"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp; &nbsp;BACK</button>
                     <button type="button" style="border: 1px solid white; margin-left: 10px;" class="btn lists" onclick="window.open('./watched-page.php', '_self')">WATCHED</button>
                     <button type="button" style="border: 1px solid white; margin-left: 10px;" class="btn lists" onclick="window.open('./favorites-page.php', '_self')">FAVORITES</button>
                 </div>
@@ -126,6 +129,7 @@ if(!isset($_SESSION['user_id'])){
             document.documentElement.scrollTop = 0;
             }
 
+//load the bucket list
 $.ajax({  
     type: 'POST',  
     url: './loadlist.php',
@@ -251,6 +255,47 @@ $.ajax({
                 
                 });
             });
+
+            //create the list to be shared
+            var shareList = 'Hey! Check my bucket list: \n\n';
+            var i = 1;
+            $('.elementfav').each(function() {
+                var temp = $(this).find('table tr td:eq(2)').text();
+                var check = temp.substring(0, temp.indexOf('-') - 1);
+                if(check !== 'NIL')
+                {
+                    shareList += (i++) + '.  ' + check + '.\n';
+                }
+            });
+            shareList += '\nVisit Flixathon to create your own lists: \nhttp://movie-project.epizy.com/index.php?i=1';
+
+            //console.log(shareList);
+
+            var encodedtext = encodeURIComponent(shareList);
+            var urlTwitter = 'https://twitter.com/intent/tweet?text=' + encodedtext;
+            var urlMail = "mailto:?body=" + encodedtext;
+            var urlWhatsapp = 'https://wa.me/?text='+encodedtext;
+            var urlSMS = 'sms:?body=' + encodedtext;
+
+            if(i !== 1)
+            {
+                $('.twitter-bar').click(function() {
+                window.open(urlTwitter, '_blank');
+                });
+
+                $('.mail-bar').click(function() {
+                    window.open(urlMail, '_blank');
+                });
+
+                $('.whatsapp-bar').click(function() {
+                    window.open(urlWhatsapp, '_blank');
+                });
+
+                $('.sms-bar').click(function() {
+                    window.open(urlSMS, '_blank');
+                });
+            }
+            
     },
     error: function() {
         $("#show").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");

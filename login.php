@@ -101,12 +101,4 @@ else {
 }
     }
 
-            //else
-                //Create two variables $authentificator1 and $authentificator2
-                //Store them in a cookie
-                //Run query to store them in rememberme table
-                //If query unsuccessful
-                    //print error
-                //else
-                    //print "success"
-                    ?>
+    ?>

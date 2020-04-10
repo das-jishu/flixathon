@@ -1,3 +1,5 @@
+<!-- This file is used to establish a connection to the database. -->
+
 <?php
     $link = mysqli_connect("localhost", "root", "", "xd");
 

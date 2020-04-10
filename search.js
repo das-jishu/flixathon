@@ -1,9 +1,11 @@
 //console.log('Hi');
-
+//API key to access the TMDb database
 var api_key = "509ffea9ab91442f2d9586f95de3ff50";
 let baseurl = '';
 var url_config = "https://api.themoviedb.org/3/configuration?api_key="+api_key;
 
+
+//fetching the base url
 fetch(url_config)
 .then((resp) => resp.json()) // Transform the data into json
 .then(function(data) {
@@ -31,12 +33,21 @@ document.getElementById("search").onclick = function() {
         if(data.results.length != 0) {
             
             //const obj = JSON.parse(data);
+            //creating lists with the data object
             var value = "";
             for (var i = 0; i < data.results.length; i++)
             {
-                var title = data.results[i].title;
+                var title = '';
                 var release = data.results[i].release_date;
                 var vote = '';
+                if(!data.results[i].hasOwnProperty('title') || data.results[i].title.length == 0)
+                {
+                    title = 'NIL';
+                }
+                else {
+                    title = data.results[i].title;
+                }
+
                 if(!data.results[i].hasOwnProperty('release_date') || release.length == 0)
                 {
                     release = 'NIL';
@@ -52,11 +63,20 @@ document.getElementById("search").onclick = function() {
                 vote = data.results[i].vote_average;
                 }
                 //console.log(release.length);
-                var overview = data.results[i].overview;
-                if (!data.results[i].hasOwnProperty('overview') || overview.length == 0) {
+                var overview = '';
+                if (!data.results[i].hasOwnProperty('overview') || data.results[i].overview.length == 0) {
                     overview = 'No synopsis provided.';
                 }
-                var id = data.results[i].id;
+                else {
+                    overview = data.results[i].overview;
+                }
+                var id = 0;
+                if (!data.results[i].hasOwnProperty('id')) {
+                    id = 0;
+                }
+                else {
+                    id = data.results[i].id;
+                }
                 var base_url = '';
                 if(!data.results[i].hasOwnProperty('poster_path') || data.results[i].poster_path == null)
                 {
@@ -86,6 +106,7 @@ document.getElementById("search").onclick = function() {
                 var cur_posterpath = $(this).find('table tr td:eq(5)').text();
                 var cur_overview = $(this).find('.extras .overview').text();
 
+                //ajax call to add the movie to favorites
                 $(this).find('.addtofavorites').click(function() {
                     $.ajax({  
                         type: 'POST',  
@@ -110,7 +131,7 @@ document.getElementById("search").onclick = function() {
 
                 });
 
-
+                //ajax call to add the movie to watched
                 $(this).find('.addtowatched').click(function() {
                     $.ajax({  
                         type: 'POST',  
@@ -135,7 +156,7 @@ document.getElementById("search").onclick = function() {
 
                 });
 
-
+                //ajax call to add the movie to bucket list
                 $(this).find('.addtobucket').click(function() {
                     $.ajax({  
                         type: 'POST',  

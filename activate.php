@@ -13,7 +13,7 @@ include('connection.php');
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Title of the page -->
-        <title>Company Website - Login</title>
+        <title>Flixathon - Activate</title>
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
@@ -30,12 +30,7 @@ include('connection.php');
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="#"><img src="company-logo.png" class="logo"></a>
-            <!-- <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item navbar-right">
-                <button class="btn btn-light"><b>SIGN IN</b></button>
-              </li>  
-            </ul> -->
+            <a class="navbar-brand" href="#"><img src="company-logo.png" class="logo"><img src='./logo-flixathon-crop.png' class='logobrand'></a>
         </nav>
 
         <?php
@@ -44,13 +39,14 @@ if(!isset($_GET['email']) || !isset($_GET['key'])){
     echo "<script>$('#activation').html('There was an error. Please click on the activation email you received in your email.');</script>"; exit;
 }
 //else
-    //Store them in two variables
+//Store them in two variables
 $email = $_GET['email'];
 $key = $_GET['key'];
     //Prepare variables for the query
 $email = mysqli_real_escape_string($link, $email);
 $key = mysqli_real_escape_string($link, $key);
     //Run query: set activation field to "activated" for the provided email
+    
 $sql = "UPDATE users SET activation='activated' WHERE (email='$email' AND activation='$key') LIMIT 1";
 $result = mysqli_query($link, $sql);
     //If query is successful, show success message and invite user to login

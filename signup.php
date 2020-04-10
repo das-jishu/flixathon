@@ -147,10 +147,45 @@ if(!$result){
 }
 
 //Send the user an email with a link to activate.php with their email and activation code
-$message = "Please click on this link to activate your account:\n\n";
-$message .= "http://movie-project.epizy.com/activate.php?email=" . urlencode($email) . "&key=$activationKey";
-if(mail($email, 'Confirm your Registration', $message, 'From:'.'das.jishu25@gmail.com\r\n')){
-       echo "<div class='alert alert-success'>Thank for your registering! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
+/* $message = "Please click on this link to activate your account:\n\n";*/
+$message = "http://movie-project.epizy.com/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+//use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'vendor/autoload.php';
+
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    //$mail->SMTPDebug = 2;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'flixathonmail@gmail.com';$mail->Password = 'flixathon_25';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    
+    //Recipients
+    $mail->setFrom('no-reply@flixathon.ml', 'Flixathon');
+    $mail->addAddress($email, 'New User');
+    
+    // Content
+    $mail->isHTML(true);
+    $mail->Subject = 'Here is the subject';
+    $mail->Body = '<div>Please click on the link below to activate your account: <br><br><a href="'.$message.'"><button style="color: white; background-color: black; height: 35px; font-size: 15px;border-radius: 5px;">Activate account</button></a></div>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo "<div class='alert alert-success'>Thank for your registering! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
 

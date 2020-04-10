@@ -28,13 +28,15 @@ include('remember.php');
 
         <!-- Linking icons -->
         <link rel="icon" href="company-logo.png">
+
+        
     </head>
 
     <body>
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="./index.php"><img src="company-logo.png" class="logo"></a>
+            <a class="navbar-brand" href="./index.php"><img src="company-logo.png" class="logo"><img src='./logo-flixathon-crop.png' class='logobrand'></a>
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item navbar-right">
                 <button onclick="window.location.href = './loginpage.php';" class="btn btn-light"><b>SIGN IN</b></button>
@@ -61,14 +63,14 @@ include('remember.php');
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="icon-list.png" class="image">
-                            <h2>List</h2>
-                            <p>Arrange and categorize your movies into lists.</p>
+                            <img src="icon-search.png" class="image">
+                            <h2>Search</h2>
+                            <p>Search for movies of different genres using a powerful API.</p>
                         </div>
                         <div class="col-md-4">
-                          <img src="icon-analyse.png" class="image">
-                          <h2>Analyse</h2>
-                          <p>We will perform an analysis based on your lists as soon as you update them.</p>
+                          <img src="icon-list.png" class="image">
+                          <h2>List</h2>
+                          <p>Arrange and categorize your movies into lists.</p>
                       </div>
                       <div class="col-md-4">
                           <img src="icon-share.png" class="image">
@@ -81,7 +83,13 @@ include('remember.php');
           </div>
         </div>
 
-          
+         
+
+        <div class='container' style='text-align: center;'>
+          <span class='attribute'>Powered by <br></span>
+          <img style='height: 22px; width: 150px; margin-top: 15px; margin-bottom: 15px;' src='./icon-tmdb.png'>
+          <span class='attribute'><br>This website uses the TMDb API but is not endorsed or certified by TMDb.</span> 
+        </div>  
           
         <!-- Footer -->
         <div style="margin-top: 200px; height: auto; text-align: center;" class="container-fluid">

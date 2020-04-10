@@ -69,12 +69,47 @@ if(!$result){
 
             //Send email with link to resetpassword.php with user id and activation code
 
-$message = "Please click on this link to reset your password:\n\n";
-$message .= "http://movie-project.epizy.com/reset-password.php?user_id=$user_id&key=$key";
-if(mail($email, 'Reset your password', $message, 'From:'.'das.jishu25@gmail.com\r\n')){
-        //If email sent successfully
-                //print success message
-       echo "<div class='alert alert-success'>An email has been sent to $email. Please click on the link to reset your password.</div>";
+//$message = "Please click on this link to reset your password:\n\n";
+$message = "http://movie-project.epizy.com/reset-password.php?user_id=$user_id&key=$key";
+
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+//use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'vendor/autoload.php';
+
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    //$mail->SMTPDebug = 2;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'flixathonmail@gmail.com';$mail->Password = 'flixathon_25';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    
+    //Recipients
+    $mail->setFrom('no-reply@flixathon.ml', 'Flixathon');
+    $mail->addAddress($email, 'New User');
+    
+    // Content
+    $mail->isHTML(true);
+    $mail->Subject = 'Here is the subject';
+    $mail->Body = '<div>Please click on the link below to reset your password: <br><br><a href="'.$message.'"><button style="color: white; background-color: black; height: 35px; font-size: 15px;border-radius: 5px;">Reset your password</button></a></div>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo "<div class='alert alert-success'>An email has been sent to $email. Please click on the link to reset your password.</div>";
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+
+
 
     ?>

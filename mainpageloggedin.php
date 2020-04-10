@@ -34,11 +34,6 @@ if(!isset($_SESSION['user_id'])){
         <!-- Navbar -->
         <nav class="navbar navbar-expand navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#"><img src="company-logo.png" class="logo"></a>
-            <!-- <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item navbar-right">
-                <button class="btn btn-light"><b>SIGN IN</b></button>
-              </li>  
-            </ul> -->
             <ul class="nav navbar-nav ml-auto">
                 <!-- <li class="nav-item navbar-right"><button class="btn-info"></button></li> -->
                 <li class="nav-item dropdown navbar-left">
@@ -67,7 +62,7 @@ if(!isset($_SESSION['user_id'])){
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" style='border: 1px solid white;' class="btn lists" onclick="window.open('./favorites-page.php', '_self')">FAVORITES</button>
                     <button type="button" style="border: 1px solid white; margin-left: 10px;" class="btn lists" onclick="window.open('./watched-page.php', '_self')">WATCHED</button>
-                    <button type="button" style="border: 1px solid white; margin-left: 10px;" class="btn lists" onclick="window.open('./bucketlist-page.php', '_self')">BUCKET LIST</button>
+                    <button type="button" style="border: 1px solid white; margin-left: 10px;" class="btn lists" onclick="window.open('./bucketlist-page.php', '_self')">BUCKET</button>
                 </div>
             </div>
         

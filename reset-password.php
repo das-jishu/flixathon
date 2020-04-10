@@ -32,11 +32,6 @@ include('connection.php');
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#"><img src="company-logo.png" class="logo"></a>
-            <!-- <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item navbar-right">
-                <button class="btn btn-light"><b>SIGN IN</b></button>
-              </li>  
-            </ul> -->
         </nav>
 
         <div class="container2">

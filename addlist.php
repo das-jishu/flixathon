@@ -27,7 +27,7 @@ else {
 //echo '22';
 
 
-//If email exists in the users table print error
+//If movie exists in the table print error
 $sql = "SELECT * FROM " . $table . " WHERE `user_id` = '$user_id' AND `movie_id` = '$movie_id'";
 $result = mysqli_query($link, $sql);
 if(!$result){
@@ -64,17 +64,13 @@ if (strcmp($table, 'bucketlist') == 0) {
 
 
 
-//run a query to create new note
+//run a query to insert new movie
 $sql = "INSERT INTO " . $table . " (`user_id`, `movie_id`, `title`, `posterpath`, `releaseyear`, `vote`, `overview`) VALUES ('$user_id', '$movie_id', '$title', '$posterpath', '$releaseyear', '$vote', '$overview')";
-//echo '23';
 $result = mysqli_query($link, $sql);
 if(!$result){
-    //echo '24';
     echo mysqli_error($link);
     echo '<div class="alert alert-danger">Error running the query while inserting!</div>';
 }else{
-    //mysqli_insert_id returns the auto generated id used in the last query
-    //echo '25';
     echo 'success';   
 }
 
