@@ -1,6 +1,6 @@
 //console.log('Hi');
 //API key to access the TMDb database
-var api_key = "509ffea9ab91442f2d9586f95de3ff50";
+var api_key = YOUR_API_KEY;
 let baseurl = '';
 var url_config = "https://api.themoviedb.org/3/configuration?api_key="+api_key;
 
@@ -16,7 +16,7 @@ fetch(url_config)
 
 document.getElementById("search").onclick = function() {
 
-    var api_key = "509ffea9ab91442f2d9586f95de3ff50";
+    var api_key = YOUR_API_KEY;
     var query_string = $("#searchquery").val();
     if (query_string.length == 0) {
         $("#show").html("<div class='alert alert-danger'>Please enter some words.</div>")
