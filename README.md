@@ -31,7 +31,6 @@ Current issues:
 
 1. Hosted by a free hosting service, so the server is slow to respond to requests.
 2. The 'remember me' feature doesn't always work since most modern browsers block cookies coming from a third-party insecure website.
-3. The lists cannot be shared to Facebook since pre-populated share messages have been decrepitated by Facebook.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 Developed and designed by Subham Das.
