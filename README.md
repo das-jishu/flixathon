@@ -22,7 +22,7 @@ Features:
 --> A movie can be moved from bucket list to watched but not vice versa.
 --> Movies can be moved from watched and bucket list to Favorites.
 4. Username and password can be updated.
-5. Activation key and password are encrypted with SHA256 hashing algorithm.
+5. Activation key and password are encrypted.
 6. The lists can be shared on Twitter, Whatsapp, Mail and SMS.
 
 ---------------------------------------------------------------------------------------------------------------------------------------
