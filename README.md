@@ -4,7 +4,7 @@ Synopsis:
 A website which uses an API key to search the TMDb database for movies and add them to corresponding lists. There is an option to share the lists through various media like mail, tweets, Whatsapp, SMS. Made using HTML, CSS, Bootstrap, JavaScript(jQuery), Ajax, PHP, MySQL. Hosted by a free hosting service.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-© Flixathon. 2020. All Rights Reserved.
+© Flixathon. 2021. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 Languages and frameworks used: HTML, CSS, Bootstrap, JavaScript(jQuery), Ajax, PHP, SQL.
